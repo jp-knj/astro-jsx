@@ -1,0 +1,23 @@
+// Bun Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`jsx runtime factory element node structure matches snapshot 1`] = `
+{
+  "key": undefined,
+  "props": {
+    "children": [
+      "hello",
+      {
+        "key": undefined,
+        "props": {
+          "children": "new",
+          "class": "badge",
+        },
+        "type": "span",
+      },
+    ],
+    "class": "card",
+    "id": "root",
+  },
+  "type": "article",
+}
+`;
