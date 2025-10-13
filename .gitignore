@@ -1,0 +1,26 @@
+# ai tools
+.claude
+.serena
+
+# editor
+.idea
+
+# dependencies
+node_modules
+.pnpm-store
+
+# build
+dist
+
+# system
+.DS_Store
+*.log
+
+# testing
+coverage
+
+# astro
+.astro
+
+# lock files (for library)
+pnpm-lock.yaml

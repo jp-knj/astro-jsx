@@ -1,0 +1,5 @@
+{
+  "$schema": "https://unpkg.com/knip@latest/schema.json",
+  "entry": ["src/runtime/jsx-runtime.ts"],
+  "project": ["src/**/*.ts"]
+}
