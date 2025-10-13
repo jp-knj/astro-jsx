@@ -7,10 +7,13 @@ import { assertWritable, createRuntimeState } from './state';
 
 // TypeScript will resolve this type from core/create-element.ts later
 type PropsFor<T extends JSXElementType> = T extends string
-  ? Record<string, any>
-  : T extends (props: infer P) => any
+  ? // biome-ignore lint/suspicious/noExplicitAny: Runtime generics need an `any` fallback for non-typed host elements
+    Record<string, any>
+  : // biome-ignore lint/suspicious/noExplicitAny: Runtime generics need an `any` fallback for non-typed host elements
+    T extends (props: infer P) => any
     ? P
-    : Record<string, any>;
+    : // biome-ignore lint/suspicious/noExplicitAny: Runtime generics need an `any` fallback for non-typed host elements
+      Record<string, any>;
 
 /**
  * 新しいランタイムインスタンスを生成する。

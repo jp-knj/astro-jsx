@@ -1,0 +1,20 @@
+---
+const serverTime = new Date().toISOString();
+---
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>astro-jsx minimal SSR</title>
+  </head>
+  <body>
+    <main>
+      <h1>astro-jsx minimal example</h1>
+      <p>This project demonstrates the default astro-jsx integration with zero client-side JS.</p>
+      <p>Server render timestamp: {serverTime}</p>
+      <p>
+        Add `.tsx` components and Astro islands as needed &mdash; the plugin has already configured
+        TypeScript and the Vite transform for you.
+      </p>
+    </main>
+  </body>
+</html>

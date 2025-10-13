@@ -1,5 +1,5 @@
 import { describe, expect, test } from 'vitest';
-import snapshotNode from '../../tests/snapshots/jsx-runtime-node';
+import snapshotNode from '../../tests/snapshots/runtime/jsx-runtime-node';
 import { Fragment, createRuntime } from './index';
 import {
   isComponentNode,

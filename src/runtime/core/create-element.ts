@@ -22,7 +22,8 @@ import { Fragment } from './fragment';
 // Props type helper
 export type PropsFor<T extends JSXElementType> = T extends string
   ? IntrinsicProps
-  : T extends (props: infer P) => any
+  : // biome-ignore lint/suspicious/noExplicitAny: Runtime generics need an `any` fallback for component props
+    T extends (props: infer P) => any
     ? P
     : FragmentProps;
 
@@ -69,6 +70,7 @@ export function createElement<T extends JSXElementType>(
 ): JSXNode {
   lockState(state);
 
+  // biome-ignore lint/suspicious/noExplicitAny: Props are intentionally loose until events/types stabilize
   const normalizedProps = normalizeProps(props as Record<string, any> | null);
 
   if (typeof type === 'string') {

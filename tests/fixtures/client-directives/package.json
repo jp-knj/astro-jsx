@@ -1,0 +1,10 @@
+{
+  "name": "client-directives",
+  "private": true,
+  "type": "module",
+  "devDependencies": {
+    "astro": "^5.0.0",
+    "astro-jsx": "workspace:*",
+    "typescript": "^5.3.3"
+  }
+}

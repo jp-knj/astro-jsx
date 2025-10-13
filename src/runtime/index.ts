@@ -24,6 +24,7 @@ export { createRuntime };
 export { createElement } from './core/create-element';
 export { createHtmlNode } from './core/html';
 export { normalizeChildren, appendChild } from './core/children';
+export { renderToString } from '../render/to-string';
 
 // Re-export types
 export type {

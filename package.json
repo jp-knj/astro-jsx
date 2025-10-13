@@ -32,6 +32,11 @@
       "import": "./dist/runtime/jsx-runtime.js",
       "default": "./dist/runtime/jsx-runtime.js"
     },
+    "./runtime/delegate": {
+      "types": "./dist/runtime/actions/index.d.ts",
+      "import": "./dist/runtime/actions/index.js",
+      "default": "./dist/runtime/actions/index.js"
+    },
     "./runtime/jsx-runtime": {
       "types": "./dist/runtime/jsx-runtime.d.ts",
       "import": "./dist/runtime/jsx-runtime.js",
@@ -41,26 +46,35 @@
       "types": "./dist/runtime/jsx-dev-runtime.d.ts",
       "import": "./dist/runtime/jsx-dev-runtime.js",
       "default": "./dist/runtime/jsx-dev-runtime.js"
+    },
+    "./plugin": {
+      "types": "./dist/plugin/index.d.ts",
+      "import": "./dist/plugin/index.js",
+      "default": "./dist/plugin/index.js"
     }
   },
   "typesVersions": {
     "*": {
       "runtime": ["dist/runtime/jsx-runtime.d.ts"],
+      "runtime/delegate": ["dist/runtime/actions/index.d.ts"],
       "runtime/jsx-runtime": ["dist/runtime/jsx-runtime.d.ts"],
-      "runtime/jsx-dev-runtime": ["dist/runtime/jsx-dev-runtime.d.ts"]
+      "runtime/jsx-dev-runtime": ["dist/runtime/jsx-dev-runtime.d.ts"],
+      "plugin": ["dist/plugin/index.d.ts"]
     }
   },
   "dependencies": {
+    "escape-html": "1.0.3",
     "zod": "^3.25.76"
   },
   "devDependencies": {
     "@biomejs/biome": "1.9.4",
+    "@types/escape-html": "1.0.4",
     "@types/node": "20.11.5",
+    "@vitest/coverage-v8": "^1.6.0",
     "astro": "^5.0.0",
     "knip": "5.64.3",
     "typescript": "5.3.3",
-    "vitest": "^1.6.0",
-    "@vitest/coverage-v8": "^1.6.0"
+    "vitest": "^1.6.0"
   },
   "peerDependencies": {
     "astro": ">=4.0.0"
