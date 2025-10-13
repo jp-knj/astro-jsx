@@ -1,0 +1,10 @@
+{
+  "name": "basic-jsx",
+  "private": true,
+  "type": "module",
+  "devDependencies": {
+    "astro-jsx": "workspace:*",
+    "astro": "^5.0.0",
+    "typescript": "^5.3.3"
+  }
+}

@@ -1,0 +1,71 @@
+{
+  "name": "astro-jsx",
+  "version": "0.0.1",
+  "type": "module",
+  "description": "Astro-compatible server-only JSX/TSX runtime with SSR renderer",
+  "sideEffects": false,
+  "scripts": {
+    "build": "tsc --project tsconfig.build.json",
+    "dev": "tsc --watch",
+    "typecheck": "tsc --noEmit",
+    "typecheck:types": "tsc --noEmit --project tests/types/tsconfig.json",
+    "lint": "biome check .",
+    "format": "biome format --write .",
+    "check": "biome check --write .",
+    "test": "vitest run",
+    "test:integration": "vitest run tests/integration/*.test.ts",
+    "test:coverage": "vitest run --coverage",
+    "test:all": "pnpm typecheck && pnpm typecheck:types && pnpm test && pnpm test:coverage",
+    "knip": "knip"
+  },
+  "keywords": ["astro", "jsx", "tsx", "ssr", "server-rendering"],
+  "author": "jp-knj",
+  "license": "MIT",
+  "exports": {
+    ".": {
+      "types": "./dist/runtime/index.d.ts",
+      "import": "./dist/runtime/index.js",
+      "default": "./dist/runtime/index.js"
+    },
+    "./runtime": {
+      "types": "./dist/runtime/jsx-runtime.d.ts",
+      "import": "./dist/runtime/jsx-runtime.js",
+      "default": "./dist/runtime/jsx-runtime.js"
+    },
+    "./runtime/jsx-runtime": {
+      "types": "./dist/runtime/jsx-runtime.d.ts",
+      "import": "./dist/runtime/jsx-runtime.js",
+      "default": "./dist/runtime/jsx-runtime.js"
+    },
+    "./runtime/jsx-dev-runtime": {
+      "types": "./dist/runtime/jsx-dev-runtime.d.ts",
+      "import": "./dist/runtime/jsx-dev-runtime.js",
+      "default": "./dist/runtime/jsx-dev-runtime.js"
+    }
+  },
+  "typesVersions": {
+    "*": {
+      "runtime": ["dist/runtime/jsx-runtime.d.ts"],
+      "runtime/jsx-runtime": ["dist/runtime/jsx-runtime.d.ts"],
+      "runtime/jsx-dev-runtime": ["dist/runtime/jsx-dev-runtime.d.ts"]
+    }
+  },
+  "dependencies": {
+    "zod": "^3.25.76"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "1.9.4",
+    "@types/node": "20.11.5",
+    "astro": "^5.0.0",
+    "knip": "5.64.3",
+    "typescript": "5.3.3",
+    "vitest": "^1.6.0",
+    "@vitest/coverage-v8": "^1.6.0"
+  },
+  "peerDependencies": {
+    "astro": ">=4.0.0"
+  },
+  "engines": {
+    "node": ">=18.14.1"
+  }
+}
