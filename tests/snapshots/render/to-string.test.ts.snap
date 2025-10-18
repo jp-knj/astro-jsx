@@ -1,0 +1,3 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`renderToString > serializes complex tree snapshot for regression safety 1`] = `"<article id="post-42" class="entry featured" style="margin-top:2rem;--accent-color:#663399" data-order="2" aria-label="Featured post"><header class="entry-header"><h1>Deep dive</h1></header><section class="content"><p>Server-rendered output</p><pre data-raw="1">&lt;raw&gt;</pre><span class="badge async">async</span></section></article><input id="newsletter" type="email" placeholder="Email" required>"`;

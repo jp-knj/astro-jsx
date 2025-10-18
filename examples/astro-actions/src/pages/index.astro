@@ -1,0 +1,157 @@
+---
+import { DelegatedPanel } from '../components/DelegatedPanel.tsx';
+
+const delegatedActions = [
+  {
+    value: 'coffee',
+    label: 'Order Coffee',
+    description: 'Send a coffee order to the log panel',
+  },
+  {
+    value: 'tea',
+    label: 'Order Tea',
+    description: 'Send a tea order to the log panel',
+  },
+  {
+    value: 'water',
+    label: 'Order Water',
+    description: 'Send a water order to the log panel',
+  },
+];
+---
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>astro-jsx delegated actions</title>
+    <style>
+      body {
+        font-family: system-ui, sans-serif;
+        display: grid;
+        place-content: center;
+        min-height: 100vh;
+        background: #0f172a;
+        color: #e2e8f0;
+      }
+
+      main {
+        background: #1e293b;
+        padding: 2rem;
+        border-radius: 1rem;
+        box-shadow: 0 1.25rem 3rem rgba(15, 23, 42, 0.45);
+        width: min(32rem, 90vw);
+      }
+
+      main > * + * {
+        margin-top: 1.25rem;
+      }
+
+      form,
+      section {
+        margin-block: 1.25rem;
+      }
+
+      button,
+      input {
+        font: inherit;
+        padding: 0.5rem 0.75rem;
+        border-radius: 0.75rem;
+        border: 1px solid rgba(148, 163, 184, 0.35);
+        background: rgba(148, 163, 184, 0.1);
+        color: inherit;
+      }
+
+      button:hover,
+      button:focus-visible {
+        background: rgba(148, 163, 184, 0.25);
+      }
+
+      #action-buttons header {
+        display: grid;
+        gap: 0.5rem;
+        margin-bottom: 1rem;
+      }
+
+      #action-buttons header h2 {
+        font-size: 1.1rem;
+        margin: 0;
+      }
+
+      #action-buttons [role='list'] {
+        display: grid;
+        gap: 0.75rem;
+      }
+
+      #action-buttons button {
+        display: block;
+        width: 100%;
+        text-align: left;
+      }
+
+      #action-log {
+        min-height: 2.5rem;
+        display: grid;
+        place-items: center;
+        background: rgba(15, 23, 42, 0.55);
+        border-radius: 0.75rem;
+        border: 1px dashed rgba(148, 163, 184, 0.4);
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <h1>Delegated form &amp; button actions</h1>
+      <p>
+        This page wires event handlers through the <code>astro-jsx:actions</code> virtual module. The
+        buttons below are rendered by a `.tsx` component, but all event listeners stay in this single
+        script block.
+      </p>
+
+      <form id="feedback">
+        <label for="message">Send a message</label>
+        <input id="message" name="message" placeholder="Try typing hello" />
+        <button type="submit">Submit</button>
+      </form>
+
+      <DelegatedPanel actions={delegatedActions} />
+
+      <div id="action-log">Waiting for activity…</div>
+    </main>
+
+    <script type="module">
+      import { delegate } from 'astro-jsx:actions';
+
+      const log = document.querySelector('#action-log');
+      const form = document.querySelector('#feedback');
+
+      if (form instanceof HTMLFormElement && log instanceof HTMLElement) {
+        const disposeSubmit = delegate.register(form, 'submit', (event, target) => {
+          event.preventDefault();
+          const formData = new FormData(target);
+          const message = formData.get('message');
+          log.textContent = message
+            ? `Submitted via delegate: ${String(message)}`
+            : 'Submitted with an empty message.';
+        });
+
+        window.addEventListener('beforeunload', () => disposeSubmit(), { once: true });
+      }
+
+      const actionPanel = document.querySelector('#action-buttons');
+
+      if (actionPanel instanceof HTMLElement && log instanceof HTMLElement) {
+        const disposeClicks = delegate.registerMany(actionPanel, {
+          click(event) {
+            if (!(event.target instanceof Element)) return;
+            const button = event.target.closest('button[data-value]');
+            if (!(button instanceof HTMLButtonElement)) return;
+            const value = button.getAttribute('data-value');
+            if (!value) return;
+            log.textContent = `Clicked ${value} via delegated listener.`;
+          },
+        });
+
+        window.addEventListener('beforeunload', () => disposeClicks(), { once: true });
+      }
+    </script>
+  </body>
+</html>
