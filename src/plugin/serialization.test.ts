@@ -5,7 +5,7 @@ import {
   assertJsonSerializable,
   formatBytes,
   normalizeIslandPayload,
-} from './serialization';
+} from './serialization.js';
 
 const createLogger = (): AstroIntegrationLogger => ({
   debug: vi.fn(),

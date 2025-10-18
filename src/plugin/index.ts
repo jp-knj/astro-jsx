@@ -1,8 +1,8 @@
 import type { AstroIntegration } from 'astro';
+import { rendererManifest } from '../render/manifest.js';
 import type { AstroJsxPluginOptions } from './internal.js';
 import { ensureJsxPreserve } from './internal.js';
 import { createAstroJsxTransformPlugin } from './transform.js';
-import { rendererManifest } from '../render/manifest.js';
 
 export { ensureJsxPreserve } from './internal.js';
 export type { AstroJsxPluginOptions } from './internal.js';
