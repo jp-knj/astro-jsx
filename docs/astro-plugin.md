@@ -9,6 +9,8 @@ wiring so the remaining checklist items can be implemented incrementally.
 - Registers an Astro integration (`src/plugin/index.ts`) that:
   - Forces TypeScript to keep JSX in `preserve` mode and point `jsxImportSource` to
     `astro-jsx/runtime`.
+  - Automatically registers the runtime renderer via `addRenderer(rendererManifest)`, so fixture and
+    user projects no longer need a bespoke `astro-jsx-renderer.mjs` entry.
   - Injects a Vite plugin scaffold before other transforms run.
 - The Vite plugin (`src/plugin/transform.ts`) currently:
   - Logs any `.astro` file containing `client:*` directives.

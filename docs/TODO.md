@@ -132,6 +132,8 @@ Based on specification v0.1 - Server-only JSX runtime for Astro
 - [x] Inject SSR island markers and props JSON payloads
 - [x] Respect `compat.acceptClassName` option during transform
 - [x] Build-time validation for dangerous patterns
+- [x] Export renderer manifest (server/client entry + jsxImportSource) and wire into package exports
+- [x] Register renderer via `addRenderer()` inside `astroJsxPlugin()` to eliminate manual fixture wiring
 
 ### 6.2 Delegated Actions Runtime
 - [x] Implement actions runtime with delegated `click`/`input`/`change`/`submit`
@@ -160,6 +162,7 @@ Based on specification v0.1 - Server-only JSX runtime for Astro
 - [ ] Automatic jsx vs jsxs selection (single vs multiple children)
 - [ ] Fragment transformation
 - [ ] Component detection and proper handling
+- [ ] Publish runtime renderer entry (`src/render/renderer.ts`) exporting name/check/renderToStaticMarkup via renderToString
 
 ### 7.2 Build-time Validation
 - [ ] Error on className usage (suggest class instead)

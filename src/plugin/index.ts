@@ -1,10 +1,11 @@
 import type { AstroIntegration } from 'astro';
-import type { AstroJsxPluginOptions } from './internal';
-import { ensureJsxPreserve } from './internal';
-import { createAstroJsxTransformPlugin } from './transform';
+import type { AstroJsxPluginOptions } from './internal.js';
+import { ensureJsxPreserve } from './internal.js';
+import { createAstroJsxTransformPlugin } from './transform.js';
+import { rendererManifest } from '../render/manifest.js';
 
-export { ensureJsxPreserve } from './internal';
-export type { AstroJsxPluginOptions } from './internal';
+export { ensureJsxPreserve } from './internal.js';
+export type { AstroJsxPluginOptions } from './internal.js';
 
 export default function astroJsxPlugin(
   options: AstroJsxPluginOptions = {},
@@ -13,7 +14,7 @@ export default function astroJsxPlugin(
     name: 'astro-jsx-plugin',
     hooks: {
       'astro:config:setup': (params) => {
-        const { updateConfig, logger } = params;
+        const { updateConfig, addRenderer, logger } = params;
 
         const tsconfigPatch = ensureJsxPreserve(logger);
 
@@ -28,8 +29,10 @@ export default function astroJsxPlugin(
 
         updateConfig(configPatch);
 
+        addRenderer(rendererManifest);
+
         logger.debug(
-          'astro-jsx: registered SWC transform scaffold (falls back to pass-through when @swc/core is unavailable).',
+          'astro-jsx: registered renderer and SWC transform scaffold (falls back to pass-through when @swc/core is unavailable).',
         );
       },
     },

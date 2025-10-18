@@ -1,10 +1,10 @@
 import type { AstroIntegrationLogger } from 'astro';
 import { describe, expect, fail, test, vi } from 'vitest';
-import { ensureJsxPreserve } from './internal';
+import { ensureJsxPreserve } from './internal.js';
 import {
   type AstroJsxVitePlugin,
   createAstroJsxTransformPlugin,
-} from './transform';
+} from './transform.js';
 
 const createLogger = (): AstroIntegrationLogger => ({
   debug: vi.fn(),

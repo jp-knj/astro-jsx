@@ -1,11 +1,11 @@
 import type { AstroIntegrationLogger } from 'astro';
-import type { AstroJsxPluginOptions, TransformerContext } from './internal';
-import { transformWithSwc } from './internal';
+import type { AstroJsxPluginOptions, TransformerContext } from './internal.js';
+import { transformWithSwc } from './internal.js';
 import {
   DEFAULT_ISLAND_PROP_BUDGET_BYTES,
   formatBytes,
   normalizeIslandPayload,
-} from './serialization';
+} from './serialization.js';
 
 type TransformResult = { code: string; map?: string | null } | undefined;
 

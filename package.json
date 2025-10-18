@@ -47,6 +47,16 @@
       "import": "./dist/runtime/jsx-dev-runtime.js",
       "default": "./dist/runtime/jsx-dev-runtime.js"
     },
+    "./render/renderer": {
+      "types": "./dist/render/renderer.d.ts",
+      "import": "./dist/render/renderer.js",
+      "default": "./dist/render/renderer.js"
+    },
+    "./render/manifest": {
+      "types": "./dist/render/manifest.d.ts",
+      "import": "./dist/render/manifest.js",
+      "default": "./dist/render/manifest.js"
+    },
     "./plugin": {
       "types": "./dist/plugin/index.d.ts",
       "import": "./dist/plugin/index.js",
@@ -59,6 +69,8 @@
       "runtime/delegate": ["dist/runtime/actions/index.d.ts"],
       "runtime/jsx-runtime": ["dist/runtime/jsx-runtime.d.ts"],
       "runtime/jsx-dev-runtime": ["dist/runtime/jsx-dev-runtime.d.ts"],
+      "render/renderer": ["dist/render/renderer.d.ts"],
+      "render/manifest": ["dist/render/manifest.d.ts"],
       "plugin": ["dist/plugin/index.d.ts"]
     }
   },
